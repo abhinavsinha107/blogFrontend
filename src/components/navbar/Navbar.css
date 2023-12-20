@@ -5,6 +5,10 @@
   padding: 10px 20px;
   background-color: #000000;
   color: white;
+  /* width: 100vw;
+  position: fixed;
+  top: 0;
+  z-index: 1000; */
 }
 
 .navbar .icon {

@@ -1,6 +1,7 @@
 :root {
   --col1: #FFDE59;
-  --col2: #1f1f1f;
+  --col2: #ffde592b;
+  --col3: #333
   --col1light: #ffde594c;
   --errorcol: red;
 }
@@ -98,7 +99,7 @@
   box-shadow: 0px 0px 10px 0px var(--col1);
   display: flex;
   flex-direction: column;
-  background-color: var(--col1light);
+  background-color: var(--col2);
   justify-content: center;
   align-items: center;
 }
