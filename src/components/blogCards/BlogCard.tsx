@@ -1,30 +1,40 @@
+import "./Blogcard.css";
+
+interface ParagraphData {
+  title: string;
+  description: string;
+  image: File | null;
+  imageUrl: string;
+  position: string;
+  createdAt: Number | null;
+}
 interface Blog {
-  name: string;
-  path: string;
-  bgcolor: string;
+  _id: string;
+  title: string;
+  description: string;
+  image: File | null;
+  imageUrl: string;
+  paragraphs: ParagraphData[];
+  category: string;
 }
 
 const BlogCard = (data: Blog) => {
-  const { name, bgcolor } = data;
+  const { title, imageUrl, _id } = data;
   return (
     <div
-      style={{
-        width: "300px",
-        height: "400px",
-        background: bgcolor,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+      className="blogcard"
+      onClick={() => {
+        // router.push(`/pages/blogpage?blogid=${_id}`)
+        window.location.href = `/pages/blogpage?blogid=${_id}`;
       }}
     >
-      <p
+      <div
+        className="blogimg"
         style={{
-          color: "white",
-          fontSize: "15px",
+          backgroundImage: `url(${imageUrl})`,
         }}
-      >
-        {name}
-      </p>
+      ></div>
+      <p>{title}</p>
     </div>
   );
 };

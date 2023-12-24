@@ -16,6 +16,7 @@
     border-radius: 10px;
     overflow: hidden;
 }
+
 .authin .left{
     width: 40%;
     background-color: rgb(208, 208, 208);
@@ -25,12 +26,10 @@
     align-items: center;
 }
 
-
 .authin .right{
     width: 60%;
     padding: 10px;
 }
-
 
 .authlink{
     align-self: center;
