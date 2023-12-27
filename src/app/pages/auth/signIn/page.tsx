@@ -166,7 +166,7 @@ export default function SignIn() {
 
               <p className="authlink">
                 Don&apos;t have an account?{" "}
-                <Link href="/pages/auth/signup">Register</Link>
+                <Link href="/pages/auth/signUp">Register</Link>
               </p>
             </form>
           </div>

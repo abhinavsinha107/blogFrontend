@@ -24,7 +24,7 @@ export default function Home() {
 
          if (response.ok) {
          } else {
-           window.location.href = "/pages/auth/signin";
+           window.location.href = "/pages/auth/signIn";
          }
        })
        .catch((error) => {

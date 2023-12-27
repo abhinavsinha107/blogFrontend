@@ -74,6 +74,7 @@ export default function SignUp() {
             position: "top-right",
             autoClose: 2000,
           });
+          window.location.href = "/pages/auth/signIn";
           setFormData({
             name: "",
             email: "",

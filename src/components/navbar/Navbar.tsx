@@ -5,10 +5,32 @@ import Image from "next/image";
 import "./Navbar.css";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import {deleteCookie} from "cookies-next"
 
 const Navbar = () => {
   const [auth, setauth] = useState<Boolean>(false);
+
+  const handleLogout = async () => {
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/logout`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.ok) {
+          window.location.href = "/auth/signIn";
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        window.location.href = "/auth/signIn";
+      });
+  };
 
   const checkLogin = async () => {
     fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/checklogin`, {
@@ -37,15 +59,40 @@ const Navbar = () => {
       });
   };
 
+
   useEffect(() => {
     checkLogin(); // Call the checkLogin function on route change
   }, []);
 
+
   const handlelogout = async () => {
-    await deleteCookie("authToken");
-    await deleteCookie("refreshToken");
-    window.location.href = "/pages/auth/signIn";
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/logout`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.ok) {
+          window.location.href = "/pages/auth/signIn";
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        window.location.href = "/pages/auth/signIn";
+      });
   };
+
+  // const handlelogout = async () => {
+  //   await deleteCookie("authToken");
+  //   await deleteCookie("refreshToken");
+  //   window.location.href = "/pages/auth/signIn";
+  // };
 
   return (
     <nav className="navbar">

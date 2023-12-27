@@ -3,7 +3,7 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer>
-      &copy; {new Date().getFullYear()} Your Company Name. All Rights Reserved.
+      &copy; {new Date().getFullYear()} BLOG Project. All Rights Reserved.
     </footer>
   );
 };
