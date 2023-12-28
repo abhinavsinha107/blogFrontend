@@ -6,8 +6,10 @@ import Image from "next/image";
 import "./Navbar.css";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const router = useRouter();
   const [auth, setauth] = useState<Boolean>(false);
 
   const handleLogout = async () => {
@@ -24,12 +26,14 @@ const Navbar = () => {
       .then((response) => {
         console.log(response);
         if (response.ok) {
-          window.location.href = "/auth/signIn";
+          // window.location.href = "/auth/signIn";
+          router.push("/pages/auth/signIn");
         }
       })
       .catch((error) => {
         console.log(error);
-        window.location.href = "/auth/signIn";
+        // window.location.href = "/auth/signIn";
+        router.push("/pages/auth/signIn");
       });
   };
 
@@ -65,30 +69,6 @@ const Navbar = () => {
     checkLogin(); // Call the checkLogin function on route change
   }, []);
 
-
-  const handlelogout = async () => {
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/logout`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((response) => {
-        console.log(response);
-        if (response.ok) {
-          window.location.href = "/pages/auth/signIn";
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        window.location.href = "/pages/auth/signIn";
-      });
-  };
-
   // const handlelogout = async () => {
   //   await deleteCookie("authToken");
   //   await deleteCookie("refreshToken");
@@ -119,7 +99,7 @@ const Navbar = () => {
           <Link href="/pages/about">About</Link>
           <Link href="/pages/contact">Contact</Link>
 
-          <button onClick={handlelogout}>Logout</button>
+          <button onClick={handleLogout}>Logout</button>
         </div>
       ) : (
         <div className="navbar-right">

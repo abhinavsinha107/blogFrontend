@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import "./BlogCard.css";
 
 interface ParagraphData {
@@ -19,13 +20,14 @@ interface Blog {
 }
 
 const BlogCard = (data: Blog) => {
+  const router = useRouter();
   const { title, imageUrl, _id } = data;
   return (
     <div
       className="blogcard"
       onClick={() => {
-        // router.push(`/pages/blogpage?blogid=${_id}`)
-        window.location.href = `/pages/blogpage?blogid=${_id}`;
+        router.push(`/pages/blogpage?blogid=${_id}`)
+        // window.location.href = `/pages/blogpage?blogid=${_id}`;
       }}
     >
       <div

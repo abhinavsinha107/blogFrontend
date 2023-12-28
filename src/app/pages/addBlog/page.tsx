@@ -1,13 +1,13 @@
 "use client";
-import Image from "next/image";
-import styles from "./page.module.css";
 import Navbar from "@/components/navbar/Navbar";
 import "./addblog.css";
 import { useEffect, useState, useRef } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { toast } from "react-toastify";
 import ClockLoader from "react-spinners/ClockLoader";
-import { getCookie, setCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
+
+
 
 
 interface ParagraphData {
@@ -29,6 +29,7 @@ interface FormData {
 
 
 export default function AddBlog() {
+  const router = useRouter();
   let [loading, setLoading] = useState(false);
 
   const checkLogin = async () => {
@@ -47,12 +48,14 @@ export default function AddBlog() {
 
         if (response.ok) {
         } else {
-          window.location.href = "/pages/auth/signIn";
+          // window.location.href = "/pages/auth/signIn";
+          router.push("/pages/auth/signIn");
         }
       })
       .catch((error) => {
         console.log(error);
-        window.location.href = "/pages/auth/signIn";
+        // window.location.href = "/pages/auth/signIn";
+        router.push("/pages/auth/signIn");
       });
   };
 

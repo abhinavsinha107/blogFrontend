@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import logo from "@/assets/BLOG.png";
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 
 interface FormData {
@@ -20,6 +21,8 @@ export default function SignIn() {
     password: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -101,8 +104,10 @@ export default function SignIn() {
           //     position: 'top-right',
           //     autoClose: 2000
           // })
-
-          window.location.href = "/";
+          
+          
+          router.push("/");
+          // window.location.href = "/";
         } else {
           // toast(response.message, {
           //     type: 'error',

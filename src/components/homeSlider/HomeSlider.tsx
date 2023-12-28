@@ -7,10 +7,8 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
 import Image from "next/image";
 
-const width = window.innerWidth;
-const height = window.innerHeight;
-
 const HomeSlider = () => {
+
   return (
     <Swiper
       slidesPerView={1}
@@ -23,21 +21,29 @@ const HomeSlider = () => {
       modules={[Pagination, Navigation]}
       className="mySwiper"
     >
-      <SwiperSlide>
+      <SwiperSlide
+        style={{ width: "100vw", height: "50vh", position: "relative" }}
+      >
         <Image
           src={img1}
           alt=""
-          width={width}
-          height={height / 2}
+          layout="fill"
+          objectFit="contain"
+          // width={width}
+          // height={height / 2}
           style={{ objectFit: "cover" }}
         />
       </SwiperSlide>
-      <SwiperSlide>
+      <SwiperSlide
+        style={{ width: "100vw", height: "50vh", position: "relative" }}
+      >
         <Image
           src={img2}
           alt=""
-          width={width}
-          height={height / 2}
+          layout="fill"
+          objectFit="contain"
+          // width={width}
+          // height={height / 2}
           style={{ objectFit: "cover" }}
         />
       </SwiperSlide>

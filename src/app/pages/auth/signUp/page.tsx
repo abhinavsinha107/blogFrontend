@@ -6,6 +6,7 @@ import { useState } from "react";
 import Image from "next/image";
 import logo from '@/assets/BLOG.png'
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 
 interface FormData {
@@ -17,6 +18,7 @@ interface FormData {
 
 
 export default function SignUp() {
+  const router = useRouter();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -74,7 +76,8 @@ export default function SignUp() {
             position: "top-right",
             autoClose: 2000,
           });
-          window.location.href = "/pages/auth/signIn";
+          // window.location.href = "/pages/auth/signIn";
+          router.push("/pages/auth/signIn");
           setFormData({
             name: "",
             email: "",
