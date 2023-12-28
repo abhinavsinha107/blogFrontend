@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import {BiPlus, BiSolidUserCircle, BiSearchAlt} from "react-icons/bi";
 import logo from "@/assets/logo.png";
