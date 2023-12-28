@@ -1,4 +1,4 @@
-import "./Blogcard.css";
+import "./BlogCard.css";
 
 interface ParagraphData {
   title: string;
