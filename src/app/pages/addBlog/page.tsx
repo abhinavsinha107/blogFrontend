@@ -128,7 +128,7 @@ export default function AddBlog() {
 
   const sortParagraphs = (a: ParagraphData, b: ParagraphData) => {
     if (a.position === b.position) {
-      return b.createdAt! - a.createdAt!;
+      return +b.createdAt! - +a.createdAt!;
     }
     return a.position.localeCompare(b.position);
   };
