@@ -24,15 +24,15 @@ const Navbar = () => {
         return res.json();
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.ok) {
-          // window.location.href = "/auth/signIn";
+          localStorage.removeItem("authToken");
+          localStorage.removeItem("refreshToken");
           router.push("/pages/auth/signIn");
         }
       })
       .catch((error) => {
         console.log(error);
-        // window.location.href = "/auth/signIn";
         router.push("/pages/auth/signIn");
       });
   };
