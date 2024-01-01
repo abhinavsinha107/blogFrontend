@@ -38,13 +38,18 @@ const Navbar = () => {
   };
 
   const checkLogin = async () => {
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/checklogin`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    })
+    let authToken = localStorage.getItem("authToken");
+    let refreshToken = localStorage.getItem("refreshToken");
+    fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_API}/auth/checklogin?authToken=${authToken}&refreshToken=${refreshToken}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    )
       .then((res) => {
         return res.json();
       })

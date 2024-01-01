@@ -60,6 +60,11 @@ export default function SignIn() {
         return res.json();
       })
       .then(async (response) => {
+        console.log(response.data.authToken, response.data.refreshToken);
+        if(localStorage && response && response.data && (response.data.authToken || response.data.refreshToken)) {
+          localStorage.setItem("authToken", response.data.authToken);
+          localStorage.setItem("refreshToken", response.data.refreshToken);
+        }
         if (response.ok) {
           toast(response.message, {
             type: "success",
@@ -85,7 +90,13 @@ export default function SignIn() {
   };
 
   const checkLogin = async () => {
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/checklogin`, {
+    // console.log(
+    //   localStorage.getItem("authToken"),
+    //   localStorage.getItem("refreshToken"),
+    // );
+    let authToken = localStorage.getItem("authToken");
+    let refreshToken = localStorage.getItem("refreshToken");
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/checklogin?authToken=${authToken}&refreshToken=${refreshToken}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -99,26 +110,14 @@ export default function SignIn() {
         console.log(response);
 
         if (response.ok) {
-          // toast(response.message, {
-          //     type: 'success',
-          //     position: 'top-right',
-          //     autoClose: 2000
-          // })
           
           
           router.push("/");
-          // window.location.href = "/";
         } else {
-          // toast(response.message, {
-          //     type: 'error',
-          //     position: 'top-right',
-          //     autoClose: 2000
-          // });
         }
       })
       .catch((error) => {
         console.log(error);
-        // window.location.href = "/";
       });
   };
 
